@@ -4,8 +4,11 @@
 
 #include "constructs.h"
 
-#define MAX_SENTENCE_LENGTH 255;
+#define MAX_SENTENCE_LENGTH 255
 
+void printSentence(char *sentence) {
+  fprintf(stdout, "Your sentence is: \n%s\n", sentence);
+}
 
 int main(int argc, char** argv) {
 
@@ -26,8 +29,4 @@ int main(int argc, char** argv) {
   printSentence(test_2);
 
   return 0;
-}
-
-void printSentence(char *sentence) {
-  fprintf(stdout, "Your sentence is: \n%s\n", sentence);
 }

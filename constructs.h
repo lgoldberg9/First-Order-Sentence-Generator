@@ -5,12 +5,12 @@
 //#define universal_quant 8704;
 //#define existential_quant 8707;
 
-#define universal_quant "uA";
-#define existential_quant "uE";
-#define equality "=";
-#define implication "->";
-#define and "/\\";
-#define or "\\/";
+#define universal_quant "uA"
+#define existential_quant "uE"
+#define equality "="
+#define implication "->"
+#define and "/\\"
+#define or "\\/"
 
 /*****************
  *Structure Types*
