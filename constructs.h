@@ -5,12 +5,12 @@
 //#define universal_quant 8704;
 //#define existential_quant 8707;
 
-#define universal_quant "uA"
-#define existential_quant "uE"
-#define equality "="
-#define implication "->"
-#define and "/\\"
-#define or "\\/"
+const wchar_t universal_quant = 8704;
+const wchar_t existential_quant = 8707;
+const wchar_t implication = 8658;
+const wchar_t and = 8743;
+const wchar_t or = 8744;
+const wchar_t not = 172;
 
 /*****************
  *Structure Types*
@@ -29,9 +29,5 @@ typedef struct relation_s {
 typedef struct constant_s {
   char symbol;
 } constant;
-
-
-
-
 
 #endif
