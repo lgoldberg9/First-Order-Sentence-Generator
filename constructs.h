@@ -1,16 +1,12 @@
 #ifndef __CONSTRUCTS_H__
 #define __CONSTRUCTS_H__
 
-// Uncomment after unicode conflict resolved
-//#define universal_quant 8704;
-//#define existential_quant 8707;
-
-const wchar_t universal_quant = 8704;
-const wchar_t existential_quant = 8707;
-const wchar_t implication = 8658;
-const wchar_t and = 8743;
-const wchar_t or = 8744;
-const wchar_t not = 172;
+const wchar_t UNIVERSAL_QUANT = 8704;
+const wchar_t EXISTENTIAL_QUANT = 8707;
+const wchar_t IMPLICATION = 8658;
+const wchar_t AND = 8743;
+const wchar_t OR = 8744;
+const wchar_t NOT = 172;
 
 /*****************
  *Structure Types*
@@ -29,5 +25,13 @@ typedef struct relation_s {
 typedef struct constant_s {
   char symbol;
 } constant;
+
+typedef struct symbol_s {
+  union Symbol_u {
+    function func;
+    relation rela;
+    constant cons;
+  } symbol_u;
+} symbol;
 
 #endif
