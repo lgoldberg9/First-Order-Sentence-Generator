@@ -1,15 +1,16 @@
 #ifndef __SENTENCE_SYMBOL_H__
 #define __SENTENCE_SYMBOL_H__
 #include <cwchar>
-
-const wchar_t UNIVERSAL_QUANT = '\u2200';
-const wchar_t EXISTENTIAL_QUANT = '\u2203';
-const wchar_t IMPLICATION = '\u21D2';
-const wchar_t NOT = '\u00AC';
-const wchar_t AND = '\u2227';
-const wchar_t OR = '\u2228';
+#include <string>
 
 using namespace std;
+
+const string UNIVERSAL_QUANT = "∀";
+const string EXISTENTIAL_QUANT = "∃";
+const string IMPLICATION = "⇒";
+const string NOT = "¬";
+const string AND = "∧";
+const string OR = "∨";
 
 class Symbol {
 protected:

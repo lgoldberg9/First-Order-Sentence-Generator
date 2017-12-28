@@ -12,9 +12,12 @@ using namespace std;
 
 int main(int argc, char **argv) {
 
-  wchar_t x = UNIVERSAL_QUANT;
-  //  cout << x;
-  cout << '\u2202';
+  cout << UNIVERSAL_QUANT << '\n';
+  cout << EXISTENTIAL_QUANT << '\n';
+  cout << NOT << '\n';
+  cout << IMPLICATION << '\n';
+  cout << AND << '\n';
+  cout << OR << '\n';
   
   return 0;
   
