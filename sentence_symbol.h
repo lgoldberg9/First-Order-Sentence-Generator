@@ -1,6 +1,5 @@
 #ifndef __SENTENCE_SYMBOL_H__
 #define __SENTENCE_SYMBOL_H__
-#include <cwchar>
 #include <string>
 
 using namespace std;
@@ -15,14 +14,14 @@ const string OR = "∨";
 class Symbol {
 protected:
   int arity;
-  wchar_t letter;
+  string letter;
 
 public:
   int weight();
   int get_arity();
-  wchar_t get_letter();
+  string get_letter();
 
-  Symbol(int arity, wchar_t letter) {}
+  Symbol(int arity, string letter) {}
 
   ~Symbol() {}
   
@@ -31,38 +30,38 @@ public:
 class Arity_0_Symbol : public Symbol {
 
 public:
-  Arity_0_Symbol(wchar_t letter);
+  Arity_0_Symbol(string letter);
   
 };
 
 class Arity_1_Symbol : public Symbol {
 
 public:
-  Arity_1_Symbol(wchar_t letter);
+  Arity_1_Symbol(string letter);
   
 };
   
 class Arity_2_Symbol : public Symbol {
 
 public:
-  Arity_2_Symbol(wchar_t letter);
+  Arity_2_Symbol(string letter);
   
 };
 
 class Arity_k_Symbol : public Symbol {
 
 public:
-  Arity_k_Symbol(int arity, wchar_t letter);
+  Arity_k_Symbol(int arity, string letter);
   
 };
 
 class Quantifier : public Arity_1_Symbol {
 
 public:
-  Quantifier(wchar_t letter);
+  Quantifier(string letter);
 
 private:
-  bool letterIsValidQuantifier(wchar_t letter);
+  bool letterIsValidQuantifier(string letter);
   
 };
 
@@ -76,31 +75,31 @@ public:
 class Logical_Binary_Operator : public Arity_2_Symbol {
 
 public:
-  Logical_Binary_Operator(wchar_t letter);
+  Logical_Binary_Operator(string letter);
 
 private:
-  bool letterIsValidLogicalBinaryOperator(wchar_t letter);
+  bool letterIsValidLogicalBinaryOperator(string letter);
   
 };
 
 class Function : public Arity_k_Symbol {
 
 public:
-  Function(int arity, wchar_t letter);
+  Function(int arity, string letter);
   
 };
 
 class Relation : public Arity_k_Symbol {
 
 public:
-  Relation(int arity, wchar_t letter);
+  Relation(int arity, string letter);
 
 };
 
 class Constant : public Arity_0_Symbol {
 
 public:
-  Constant(int arity, wchar_t letter);
+  Constant(int arity, string letter);
   
 };
 
@@ -114,7 +113,7 @@ public:
 class Variable : public Arity_0_Symbol {
 
 public:
-  Variable(wchar_t letter);
+  Variable(string letter);
   
 };
 

@@ -1,4 +1,6 @@
-#include <cwchar>
+#include <string>
+
+using namespace std;
 
 int symbol::weight() {
   return 1 - this->artiy;
@@ -8,41 +10,41 @@ int symbol::get_arity() {
   return this->arity;
 }
   
-wchar_t symbol::get_letter() {
+string symbol::get_letter() {
   return this->letter;
 }
 
-Symbol::Symbol(int arity, wchar_t letter) {
+Symbol::Symbol(int arity, string letter) {
   this->arity = arity;
   this->letter = letter;
 }
 
-Arity_0_Symbol::Arity_0_Symbol(wchar_t letter) {
+Arity_0_Symbol::Arity_0_Symbol(string letter) {
   int arity = 0;
   Symbol(arity, letter);
 }
 
-Arity_1_Symbol::Arity_1_Symbol(wchar_t letter) {
+Arity_1_Symbol::Arity_1_Symbol(string letter) {
   int arity = 1;
   Symbol(arity, letter);
 }
 
-Arity_2_Symbol::Arity_2_Symbol(wchar_t letter) {
+Arity_2_Symbol::Arity_2_Symbol(string letter) {
   int arity = 2;
   Symbol(arity, letter);
 }
 
-Arity_k_Symbol::Arity_k_Symbol(int arity, wchar_t letter) {
+Arity_k_Symbol::Arity_k_Symbol(int arity, string letter) {
   Symbol(arity, letter);
 }
 
-Quantifier::Quantifier(wchar_t letter) {
+Quantifier::Quantifier(string letter) {
   if (this->letterIsValidQuantifier(letter)) {
     Arity_1_Symbol(letter);
   }
 }
 
-bool letterIsValidQuantifier(wchar_t letter) {
+bool letterIsValidQuantifier(string letter) {
   return letter == UNIVERSAL_QUANTIFIER || letter == EXISTENTIAL_QUANTIFIER;
 }
 
@@ -51,37 +53,37 @@ int Quantifier::weight() {
 }
 
 Negation::Negation() {
-   wchar_t letter = NOT;
+   string letter = NOT;
    Arity_1_Symbol(letter);
 }
 
-Logical_Binary_Operator(wchar_t letter) {
+Logical_Binary_Operator(string letter) {
   if (letterIsValidOperator(letter)) {
     Arity_2_Symbol(letter);
   }
 }
   
-bool Logical_Binary_Operator::letterIsValidLogicalBinaryOperator(wchar_t letter) {
+bool Logical_Binary_Operator::letterIsValidLogicalBinaryOperator(string letter) {
   return letter == IMPLICATION || letter == AND || letter == OR;
 }
 
-Function::Function(int arity, wchar_t letter) {
+Function::Function(int arity, string letter) {
   Arity_k_Symbol(arity, letter);
 }
 
-Relation::Relation(int arity, wchar_t letter) {
+Relation::Relation(int arity, string letter) {
   Arity_k_Symbol(arity, letter);
 }
 
-Constant::Constant(int arity, wchar_t letter) {
+Constant::Constant(int arity, string letter) {
   Arity_0_Symbol(arity, letter);
 }
 
 Equality::Equality() {
-  wchar_t letter = '=';
+  string letter = '=';
   Logical_Binary_Operator(letter);
 }
 
-Variable::Variable(wchar_t letter) {
+Variable::Variable(string letter) {
   Arity_0_Symbol(letter);
 }
