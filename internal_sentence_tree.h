@@ -3,29 +3,45 @@
 
 #include "sentence_symbol.h"
 
-class terms {
+class Term {
 
-  // strings of the form, x, c, and fx_1x_2...
+private:
+  // strings with variables, constants, and functions
+  Symbol root_symbol;
+  Term branches[];
+
+public:
+  Term();
   
-  terms() {}
+  string term_to_string();
   
-  ~terms() {}
+  ~Term();
 
 };
 
-class atomic_formulas {
+class Atomic_Formula {
 
-  // strings of the form, Rx_1x_2..x_n and =x_1x_2
+private:
+  // strings of the form, Rt_1t_2...t_n and =t_1t_2, where R is a relation  
+  Symbol root_symbol;
+  Term branches[];
+
+public:
+  Atomic_Formula();
+
+  string atomic_formula_to_string();
+  
+  ~Atomic_Formula();
   
 };
 
-class formulas {
+class Formula {
 
   // Freely generated collection of the above sets
 
 };
 
-class sentences {
+class Sentence {
 
   // Subset with no of formulas with no free variables
   
