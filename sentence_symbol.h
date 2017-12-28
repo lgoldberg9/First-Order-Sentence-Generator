@@ -1,162 +1,120 @@
-#include <streamio>
-#include <cstdlib>
+#ifndef __SENTENCE_SYMBOL_H__
+#define __SENTENCE_SYMBOL_H__
 #include <cwchar>
-#include <string>
-#include <list>
 
-const wchar_t UNIVERSAL_QUANT = U+2200;
-const wchar_t EXISTENTIAL_QUANT = U+2203;
-const wchar_t IMPLICATION = U+21D2;
-const wchar_t NOT = U+00AC;
-const wchar_t AND = U+2227;
-const wchar_t OR = U+2228;
+const wchar_t UNIVERSAL_QUANT = '\u2200';
+const wchar_t EXISTENTIAL_QUANT = '\u2203';
+const wchar_t IMPLICATION = '\u21D2';
+const wchar_t NOT = '\u00AC';
+const wchar_t AND = '\u2227';
+const wchar_t OR = '\u2228';
 
 using namespace std;
 
-class symbol {
+class Symbol {
 protected:
-  virtual int arity;
-  virtual wchar_t letter;
+  int arity;
+  wchar_t letter;
 
 public:
-  int weight() {
-    return 1 - this.artiy;
-  };
+  int weight();
+  int get_arity();
+  wchar_t get_letter();
 
-  int get_arity() {
-    return this.arity;
-  }
-  
-  wchar_t get_letter() {
-    return this.letter;
-  }
+  Symbol(int arity, wchar_t letter) {}
 
-  symbol(int arity, wchar_t letter) {
-    this.arity = arity;
-    this.letter = letter;
-  }
-
-  ~symbol() {}
+  ~Symbol() {}
   
 };
 
-class arity_0_symbol : public symbol {
+class Arity_0_Symbol : public Symbol {
 
-  arity_0_symbol(wchar_t letter) {
-    int arity = 0;
-    symbol(arity, letter);
-  }
+public:
+  Arity_0_Symbol(wchar_t letter);
   
 };
 
-class arity_1_symbol : public symbol {
+class Arity_1_Symbol : public Symbol {
 
-  arity_1_symbol(wchar_t letter) {
-    int arity = 1;
-    symbol(arity, letter);
-  }
+public:
+  Arity_1_Symbol(wchar_t letter);
   
 };
   
-class arity_2_symbol : public symbol {
+class Arity_2_Symbol : public Symbol {
 
-  arity_2_symbol(wchar_t letter) {
-    int arity = 2;
-    symbol(arity, letter);
-  }
+public:
+  Arity_2_Symbol(wchar_t letter);
   
 };
 
-class arity_k_symbol : public symbol {
+class Arity_k_Symbol : public Symbol {
 
-  arity_k_symbol(int arity, wchar_t letter) {
-    symbol(arity, letter);
-  }
+public:
+  Arity_k_Symbol(int arity, wchar_t letter);
   
 };
 
-class quantifier : public arity_1_symbol {
+class Quantifier : public Arity_1_Symbol {
 
-  quantifier(wchar_t letter) {
-    if (letterIsValidQuantifier(letter)) {
-      arity_1_symbol(letter);
-    }
-  }
-
-  int weight() {
-    return -1;
-  }
+public:
+  Quantifier(wchar_t letter);
 
 private:
-  boolean letterIsValidQuantifier(wchar_t letter) {
-    return letter == UNIVERSAL_QUANTIFIER || letter == EXISTENTIAL_QUANTIFIER;
-  }
+  bool letterIsValidQuantifier(wchar_t letter);
   
 };
 
-class negation : public arity_1_symbol {
+class Negation : public Arity_1_Symbol {
 
-  negation() {
-    wchar_t letter = NOT;
-    arity_1_symbol(letter);
-  }
+public:
+  Negation();
   
 };
 
-class logical_binary_operator : public arity_2_symbol {
+class Logical_Binary_Operator : public Arity_2_Symbol {
 
-  logical_binary_operator(wchar_t letter) {
-    if (letterIsValidOperator(letter)) {
-      arity_2_symbol(arity, letter);
-    }
-  }
+public:
+  Logical_Binary_Operator(wchar_t letter);
 
 private:
-  
-  boolean letterIsValidLogicalBinaryOperator(wchar_t letter) {
-    return letter == IMPLICATION || letter == AND || letter == OR;
-  }
-  
-}
-
-class function : public arity_k_symbol {
-
-  function(int arity, wchar_t letter) {
-    arity_k_symbol(arity, letter);
-  }
+  bool letterIsValidLogicalBinaryOperator(wchar_t letter);
   
 };
 
-class relation : public arity_k_symbol {
+class Function : public Arity_k_Symbol {
 
-  relation(int arity, wchar_t letter) {
-    arity_k_symbol(arity, letter);
-  }
-
-};
-
-class constant : public arity_0_symbol {
-
-  constant(int arity, wchar_t letter) {
-    arity_0_symbol(arity, letter);
-  }
+public:
+  Function(int arity, wchar_t letter);
   
 };
 
-class equality : public binary_operator {
+class Relation : public Arity_k_Symbol {
 
-  equality() {
-    wchar_t letter = '=';
-    binary_operator(letter);
-  }
+public:
+  Relation(int arity, wchar_t letter);
+
+};
+
+class Constant : public Arity_0_Symbol {
+
+public:
+  Constant(int arity, wchar_t letter);
   
 };
 
-class variable : public arity_0_symbol {
+class Equality : public Logical_Binary_Operator {
 
-  variable(wchar_t letter) {
-    arity_0_symbol(letter);
-  }
+public:
+  Equality();
   
 };
 
+class Variable : public Arity_0_Symbol {
+
+public:
+  Variable(wchar_t letter);
+  
+};
+
+#endif

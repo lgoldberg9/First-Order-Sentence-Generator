@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <cwchar>
-#include <streamio>
+#include <iostream>
 #include <string>
 
 #include "language.h"
@@ -8,13 +8,13 @@
 #include "internal_sentence_tree.h"
 #include "generator_sentence_tree.h"
 
-
 using namespace std;
 
-int main(int argc, String[] argv) {
+int main(int argc, char **argv) {
 
-  wchar_t x = U+2200;
-  cout << x;
+  wchar_t x = UNIVERSAL_QUANT;
+  //  cout << x;
+  cout << '\u2202';
   
   return 0;
   

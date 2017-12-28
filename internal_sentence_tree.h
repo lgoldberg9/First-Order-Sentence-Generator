@@ -1,3 +1,6 @@
+#ifndef __INTERNAL_SENTENCE_TREE_H__
+#define __INTERNAL_SENTENCE_TREE_H__
+
 #include "sentence_symbol.h"
 
 class terms {
@@ -27,3 +30,5 @@ class sentences {
   // Subset with no of formulas with no free variables
   
 };
+
+#endif
