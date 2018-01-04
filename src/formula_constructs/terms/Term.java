@@ -12,13 +12,28 @@ package formula_constructs.terms;
 public class Term {
     
     private TermNode root;
+    private int termLength;
     
+    /**
+     *
+     */
     public Term() {
         //@TODO
     }
     
+    /**
+     *
+     */
     public void insert() {
         //@TODO
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public String traverse() {
+        return null;
     }
     
     /**
