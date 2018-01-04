@@ -6,7 +6,7 @@
 package formula_constructs.logical_mechanics;
 
 import symbols.PredicateSymbol;
-import symbols.Variable;
+import symbols.VariableSymbol;
 
 /**
  *
@@ -14,17 +14,17 @@ import symbols.Variable;
  */
 public class Predicate implements GenericMechanic {
     
-    private PredicateSymbol predicate;
-    private Variable var;
+    private final PredicateSymbol predicate;
+    private final VariableSymbol var;
     
-    public Predicate(PredicateSymbol predicate, Variable var) {
+    public Predicate(PredicateSymbol predicate, VariableSymbol var) {
         this.predicate = predicate;
         this.var = var;
     }
     
     @Override
     public String print() {
-        return this.predicate.getSymChar() + this.var.getSymChar();
+        return this.predicate.getSymString() + this.var.getSymString();
     }
     
     public boolean equals(Object other) {

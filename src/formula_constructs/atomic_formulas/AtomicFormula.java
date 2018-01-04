@@ -7,7 +7,8 @@ package formula_constructs.atomic_formulas;
 
 import formula_constructs.terms.Term;
 import java.util.ArrayList;
-import symbols.Relation;
+import java.util.Objects;
+import symbols.RelationSymbol;
 
 /**
  *
@@ -15,16 +16,18 @@ import symbols.Relation;
  */
 public class AtomicFormula {
     
-    private final Relation atomicRoot;
+    private final RelationSymbol atomicRoot;
     private final ArrayList<Term> arguments;
+    private final int length;
     
     /**
      *
      * @param rel
      */
-    public AtomicFormula(Relation rel /* stuff */) {
+    public AtomicFormula(RelationSymbol rel /* stuff */) {
         this.atomicRoot = rel;
         this.arguments = new ArrayList<>(rel.getArity());
+        this.length = -1;
     }
     
     /**
@@ -53,5 +56,14 @@ public class AtomicFormula {
             }
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.atomicRoot);
+        hash = 83 * hash + Objects.hashCode(this.arguments);
+        hash = 83 * hash + this.length;
+        return hash;
     }
 }

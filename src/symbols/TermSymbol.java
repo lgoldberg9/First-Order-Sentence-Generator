@@ -9,15 +9,8 @@ package symbols;
  *
  * @author logan
  */
-public class Variable extends Symbol {
-
-    public Variable(String symChar) {
-        this.symChar = symChar;
-    } 
+interface TermSymbol {
     
-    @Override
-    public int weight() {
-        return -1;
-    }
+    
     
 }

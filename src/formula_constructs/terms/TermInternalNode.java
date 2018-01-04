@@ -5,9 +5,9 @@
  */
 package formula_constructs.terms;
 
-import static java.lang.Double.min;
+import symbols.Symbol;
+import symbols.FunctionSymbol;
 import java.util.ArrayList;
-import symbols.*;
 
 /**
  *
@@ -15,14 +15,14 @@ import symbols.*;
  */
 public class TermInternalNode implements TermNode {
 
-    private final Function nodeSymbol;
+    private final FunctionSymbol nodeSymbol;
     private final ArrayList<TermNode> branches;
     
     /**
      *
      * @param func
      */
-    public TermInternalNode(Function func /* stuff */) {
+    public TermInternalNode(FunctionSymbol func /* stuff */) {
         this.nodeSymbol = func;
         this.branches = new ArrayList<>(func.getArity());
     }

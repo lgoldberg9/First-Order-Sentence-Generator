@@ -9,8 +9,7 @@ package symbols;
  *
  * @author logan
  */
-public interface LanguageSymbol {
-    
-    public int getArity();
+public interface LanguageSymbol extends Symbol {
+
     
 }

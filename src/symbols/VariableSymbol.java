@@ -9,10 +9,15 @@ package symbols;
  *
  * @author logan
  */
-public class Function extends ArityLanguageSymbol {
+public class VariableSymbol extends FixedSymbol {
     
-    public Function(String symChar, int arity) {
-        super(symChar, arity);
+    public VariableSymbol(String symString) {
+        super(symString);
     }
-
+    
+    /**
+     *
+     */
+    public static final VariableSymbol X_1 = new VariableSymbol("X_1");
+    
 }

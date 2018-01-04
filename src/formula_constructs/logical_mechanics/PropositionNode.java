@@ -5,7 +5,6 @@
  */
 package formula_constructs.logical_mechanics;
 
-import formula_constructs.terms.TermNode;
 import symbols.Symbol;
 
 /**

@@ -9,34 +9,18 @@ package symbols;
  *
  * @author logan
  */
-public abstract class Symbol {
-
-    /**
-     *
-     */
-    protected String symChar;
+public interface Symbol {
     
     /**
      *
      * @return
      */
-    public abstract int weight();
+    public int getWeight();
     
     /**
      *
      * @return
      */
-    public String getSymChar() {
-        return this.symChar;
-    }
-    
-    public boolean equals(Object other) {
-        if (other instanceof Symbol) {
-            Symbol otherSym = (Symbol) other;
-            return this.symChar.equals(otherSym.symChar);
-        } else {
-            return false;
-        }
-    }
+    public String getSymString();
     
 }

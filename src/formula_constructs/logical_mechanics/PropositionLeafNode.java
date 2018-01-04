@@ -6,8 +6,6 @@
 package formula_constructs.logical_mechanics;
 
 import formula_constructs.atomic_formulas.AtomicFormula;
-import java.util.ArrayList;
-import symbols.PropositionSymbol;
 import symbols.Symbol;
 
 /**

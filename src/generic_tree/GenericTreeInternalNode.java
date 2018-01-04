@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package generic_tree;
-import symbols.*;
+import symbols.Symbol;
 
 /**
  *

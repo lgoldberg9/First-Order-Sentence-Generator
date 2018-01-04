@@ -9,12 +9,15 @@ package symbols;
  *
  * @author logan
  */
-public class Relation extends ArityLanguageSymbol {
+public class RelationSymbol extends TupleLanguageSymbol {
     
-    public Relation(String symChar, int arity) {
-        super(symChar, arity);
+    public RelationSymbol(String relationSym, int arity) {
+        super(relationSym, arity);
     }
     
-    public static final Relation EQUALITY = new Relation("=", 2);
+    /**
+     *
+     */
+    public static final RelationSymbol EQUALS = new RelationSymbol("=", 2);
     
 }

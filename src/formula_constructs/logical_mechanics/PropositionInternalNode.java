@@ -5,9 +5,10 @@
  */
 package formula_constructs.logical_mechanics;
 
-import formula_constructs.atomic_formulas.AtomicFormula;
+import symbols.Symbol;
+import symbols.PropositionalOperatorSymbol;
 import java.util.ArrayList;
-import symbols.*;
+import java.util.Objects;
 
 /**
  *
@@ -15,12 +16,12 @@ import symbols.*;
  */
 public class PropositionInternalNode implements PropositionNode {
 
-    private PropositionSymbol proposition;
-    private ArrayList<PropositionNode> branches;
+    private final PropositionalOperatorSymbol proposition;
+    private final ArrayList<PropositionNode> branches;
     
-    public PropositionInternalNode(PropositionSymbol prop /* stuff */) {
+    public PropositionInternalNode(PropositionalOperatorSymbol prop /* stuff */) {
         this.proposition = prop;
-        this.branches = new ArrayList<PropositionNode>();
+        this.branches = new ArrayList<>(prop.getArguments());
     }
     
     public String print() {
@@ -40,5 +41,13 @@ public class PropositionInternalNode implements PropositionNode {
     @Override
     public boolean equals(Object node) {
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + Objects.hashCode(this.proposition);
+        hash = 41 * hash + Objects.hashCode(this.branches);
+        return hash;
     }
 }
